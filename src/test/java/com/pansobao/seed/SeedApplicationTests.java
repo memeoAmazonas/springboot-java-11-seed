@@ -1,4 +1,4 @@
-package com.pansobao.seed.seed;
+package com.pansobao.seed;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
