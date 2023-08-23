@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Value
 @Builder
 public class Ability {
-
     String name;
     String description;
     BigDecimal damage;
