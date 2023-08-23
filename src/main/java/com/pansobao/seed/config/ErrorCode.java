@@ -1,5 +1,8 @@
 package com.pansobao.seed.config;
 
+import lombok.Getter;
+
+@Getter
 public enum ErrorCode {
     INTERNAL_ERROR(100, "Error interno del servidor"),
     WEB_CLIENT_GENERIC(101, "Error del Web client"),
@@ -20,11 +23,4 @@ public enum ErrorCode {
         this.reason = reason;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public String getReason() {
-        return reason;
-    }
 }

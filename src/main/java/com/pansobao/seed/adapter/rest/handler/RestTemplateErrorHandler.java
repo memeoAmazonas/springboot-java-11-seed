@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
-import org.springframework.web.client.RestClientException;
 
 import java.io.IOException;
 import java.util.Map;

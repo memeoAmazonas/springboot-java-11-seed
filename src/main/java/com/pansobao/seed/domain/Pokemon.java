@@ -13,7 +13,4 @@ public class Pokemon {
     private Ability ability;
     private Type type;
     private BigDecimal health;
-
-    public void attack(BigDecimal damage){ health = health.subtract(damage);}
-
 }

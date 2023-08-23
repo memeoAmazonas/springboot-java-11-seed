@@ -4,8 +4,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
 @Data
 @Component
 @ConfigurationProperties(prefix = "pokemon")
@@ -19,7 +17,4 @@ public class PokemonProperty {
         return urlBase.concat(url).concat(complement);
     }
 
-    public String getUrl(String url) {
-        return urlBase.concat(url);
-    }
 }
