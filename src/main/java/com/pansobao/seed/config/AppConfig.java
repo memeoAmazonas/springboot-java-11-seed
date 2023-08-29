@@ -1,5 +1,6 @@
 package com.pansobao.seed.config;
 
+import com.pansobao.seed.config.interceptor.LogInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -26,6 +27,7 @@ public class AppConfig implements WebMvcConfigurer {
         return restTemplateBuilder
                 .setConnectTimeout(Duration.ofMillis(timeout))
                 .setReadTimeout(Duration.ofMillis(timeout))
+                .interceptors(new LogInterceptor())
                 .requestFactory(() -> new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()))
                 .build();
     }

@@ -23,4 +23,11 @@ public enum ErrorCode {
         this.reason = reason;
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public String getReason() {
+        return reason;
+    }
 }

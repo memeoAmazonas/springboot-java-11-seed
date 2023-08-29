@@ -8,7 +8,7 @@ import com.pansobao.seed.adapter.rest.handler.RestTemplateErrorHandler;
 import com.pansobao.seed.adapter.rest.model.ability.AbilityModel;
 import com.pansobao.seed.application.port.out.AbilityRepository;
 import com.pansobao.seed.config.ErrorCode;
-import com.pansobao.seed.config.PokemonProperty;
+import com.pansobao.seed.config.property.PokemonProperty;
 import com.pansobao.seed.domain.Ability;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

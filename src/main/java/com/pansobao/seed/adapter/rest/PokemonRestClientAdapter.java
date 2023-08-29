@@ -8,7 +8,7 @@ import com.pansobao.seed.adapter.rest.handler.RestTemplateErrorHandler;
 import com.pansobao.seed.adapter.rest.model.pokemon.PokemonModel;
 import com.pansobao.seed.application.port.out.PokemonRepository;
 import com.pansobao.seed.config.ErrorCode;
-import com.pansobao.seed.config.PokemonProperty;
+import com.pansobao.seed.config.property.PokemonProperty;
 import com.pansobao.seed.domain.Pokemon;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -39,6 +39,7 @@ private final RestTemplate restTemplate;
     @Override
     public Pokemon getPokemon(String name) {
     log.info("Servicio obtener pokemon, buscar: [{}]" ,property.getUrl(property.getUrlName(), name));
+    log.debug("este mensaje no debe aparece en el modo develop");
         PokemonModel response = Optional.ofNullable(restTemplate.getForObject(property.getUrl(property.getUrlName(), name),PokemonModel.class,name))
                 .orElseThrow(()-> new EmptyOrNullBodyRestClientException(ErrorCode.POKEMON_NOT_FOUND));
         log.info("Respuesta obtenida desde el servicio obtener pokemon data: [{}]", response);

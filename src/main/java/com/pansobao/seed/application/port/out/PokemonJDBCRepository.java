@@ -2,7 +2,12 @@ package com.pansobao.seed.application.port.out;
 
 import com.pansobao.seed.domain.Pokemon;
 
+import java.util.Optional;
+
 public interface PokemonJDBCRepository {
-    Integer CreatePokemon(Pokemon pokemon);
+    Integer createPokemon(Pokemon pokemon);
+
+    Optional<Pokemon> getPokemonByName(String name);
+
 
 }
