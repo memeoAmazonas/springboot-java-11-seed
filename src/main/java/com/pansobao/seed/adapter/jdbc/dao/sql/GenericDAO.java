@@ -1,11 +1,14 @@
-package com.pansobao.seed.adapter.jdbc.dao;
+package com.pansobao.seed.adapter.jdbc.dao.sql;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -62,4 +65,10 @@ public class GenericDAO {
                 BeanPropertyRowMapper<>(tClass));
     }
 
+    public Number insert(String sql, MapSqlParameterSource params, String[] keys) {
+        log.info(SQL_MESSAGE, sql, params);
+        KeyHolder holder = new GeneratedKeyHolder();
+        template.update(sql, params, holder, keys);
+        return holder.getKey();
+    }
 }

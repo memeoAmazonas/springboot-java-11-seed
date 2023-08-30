@@ -7,4 +7,7 @@ import java.util.concurrent.ExecutionException;
 public interface GetPokemonAbilityQuery {
 
     Pokemon getPokemon(String name) throws ExecutionException, InterruptedException;
+    Pokemon getInternal(String name);
+
+
 }

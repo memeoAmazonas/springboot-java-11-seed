@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 @RequestMapping("/api/v1/pokemon")
 public final class PokemoControllerAdapter {
     private static final String GET_POKEMON = "/{name}";
+    private static final String GET_INTERNAL_POKEMON = "/internal/{name}";
     private final GetPokemonAbilityQuery getPokemonAbilityQuery;
 
     public PokemoControllerAdapter(GetPokemonAbilityQuery getPokemonAbilityQuery) {
@@ -29,6 +30,14 @@ public final class PokemoControllerAdapter {
         Pokemon pokemon = this.getPokemonAbilityQuery.getPokemon(name);
         PokemonRest response = PokemonRest.toPokemonRest(pokemon);
         log.info("Respuesta del servicio pokemon/{}", name);
+        return response;
+    }
+    @GetMapping(GET_INTERNAL_POKEMON)
+    public PokemonRest getInternalPokemon(@PathVariable("name") String name){
+        log.info("Llamada al servicio pokemon/internal/{}", name);
+        Pokemon pokemon = this.getPokemonAbilityQuery.getInternal(name);
+        PokemonRest response = PokemonRest.toPokemonRest(pokemon);
+        log.info("Respuesta del servicio pokemon/internal/{}", name);
         return response;
     }
 }

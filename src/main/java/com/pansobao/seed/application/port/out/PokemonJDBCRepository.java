@@ -6,8 +6,5 @@ import java.util.Optional;
 
 public interface PokemonJDBCRepository {
     Integer createPokemon(Pokemon pokemon);
-
-    Optional<Pokemon> getPokemonByName(String name);
-
-
+    Pokemon getPokemonByName(String name);
 }

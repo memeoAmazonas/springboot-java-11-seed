@@ -4,6 +4,7 @@ import com.pansobao.seed.domain.Ability;
 import com.pansobao.seed.domain.Pokemon;
 import com.pansobao.seed.domain.Type;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,20 +13,22 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PokemonJDBCModel implements Serializable {
     private String name;
     private String ability;
     private Integer id;
 
-    public static Pokemon toDomain(PokemonJDBCModel model) {
+    public Pokemon toDomain() {
         return Pokemon.builder()
-                .name(model.getName())
+                .name(this.name)
                 .ability(Ability.builder()
-                        .name(model.ability)
+                        .name(this.name)
                         .build())
                 .type(Type.builder()
-                        .name(model.getName().concat(model.getAbility().toUpperCase()))
+                        .name(this.name.concat(this.ability.toUpperCase()))
                         .build())
                 .build();
     }
+
 }

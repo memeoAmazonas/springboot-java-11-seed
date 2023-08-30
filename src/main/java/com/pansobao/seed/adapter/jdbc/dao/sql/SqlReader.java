@@ -1,4 +1,4 @@
-package com.pansobao.seed.adapter.jdbc.dao;
+package com.pansobao.seed.adapter.jdbc.dao.sql;
 
 import com.pansobao.seed.adapter.jdbc.exception.SqlReaderException;
 import lombok.experimental.UtilityClass;

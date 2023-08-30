@@ -30,11 +30,10 @@ public class GetPokemonAbilityUseCase implements GetPokemonAbilityQuery {
     private final Executor executor;
 
     private final PokemonJDBCRepository pokemonJDBCRepository;
+
     @Override
     public Pokemon getPokemon(String name) throws ExecutionException, InterruptedException {
         Pokemon pokemon = pokemonRepository.getPokemon(name);
-        Optional<Pokemon> work = Optional.ofNullable(pokemonJDBCRepository.getPokemonByName("amazonas").orElseThrow(() -> new RuntimeException(ErrorCode.POKEMON_NOT_FOUND.getReason())));
-        log.info("-------------- {}",work);
 
         log.info("Pokemon obtenido [{}]", name);
         CompletableFuture<Ability> abilities = this.getAbility(pokemon.getAbility().getName());
@@ -49,6 +48,7 @@ public class GetPokemonAbilityUseCase implements GetPokemonAbilityQuery {
                 .name(pokemon.getName())
                 .build();
     }
+
 
     private CompletableFuture<Ability> getAbility(String name) {
         log.info("Llamando a getAbility name: {}", name);
@@ -66,5 +66,10 @@ public class GetPokemonAbilityUseCase implements GetPokemonAbilityQuery {
                     log.error("Ocurio un error en el llamado asincrono al repositorio type", ex);
                     return null;
                 });
+    }
+
+    @Override
+    public Pokemon getInternal(String name) {
+        return pokemonJDBCRepository.getPokemonByName(name);
     }
 }

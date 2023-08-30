@@ -1,9 +1,11 @@
 package com.pansobao.seed.adapter.jdbc.postgres;
 
-import com.pansobao.seed.adapter.jdbc.dao.GenericDAO;
-import com.pansobao.seed.adapter.jdbc.dao.SqlReader;
+import com.pansobao.seed.adapter.jdbc.dao.sql.GenericDAO;
+import com.pansobao.seed.adapter.jdbc.dao.sql.SqlReader;
 import com.pansobao.seed.adapter.jdbc.postgres.model.PokemonJDBCModel;
+import com.pansobao.seed.adapter.rest.exception.BadRequestRestClientException;
 import com.pansobao.seed.application.port.out.PokemonJDBCRepository;
+import com.pansobao.seed.config.ErrorCode;
 import com.pansobao.seed.domain.Pokemon;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -17,31 +19,36 @@ import java.util.Optional;
 public class PokemonJDBCAdapter implements PokemonJDBCRepository {
 
     private static final String SQL_GET_POKEMON = "sql/get-pokemon.sql";
+    private static final String SQL_INSERT_POKEMON = "sql/insert-pokemon.sql";
     private static final String KEY_POKEMON_NAME = "name";
+    private static final String KEY_POKEMON_ABILITY = "ability";
     private final GenericDAO dao;
 
     private final String getPokemon;
+    private final String insertPokemon;
 
 
     public PokemonJDBCAdapter(final GenericDAO dao) {
         this.dao = dao;
         this.getPokemon = SqlReader.read(SQL_GET_POKEMON);
+        this.insertPokemon = SqlReader.read(SQL_INSERT_POKEMON);
     }
 
     @Override
     public Integer createPokemon(Pokemon pokemon) {
-        return null;
+        log.info("Insertando un nuevo pokemon en la BD [{}]", pokemon);
+        var params = new MapSqlParameterSource()
+                .addValue(KEY_POKEMON_NAME, pokemon.getName())
+                        .addValue(KEY_POKEMON_ABILITY, pokemon.getAbility().getName());
+        return dao.insert(insertPokemon,params,new String[]{}).intValue();
     }
 
     @Override
-    public Optional<Pokemon> getPokemonByName(String name) {
+    public Pokemon getPokemonByName(String name) {
         var parameter = new MapSqlParameterSource().addValue(KEY_POKEMON_NAME, name);
-        try {
             log.info("Se va a realizar la busqueda del pokemon cuyo nombre es: [{}]", name);
-            return dao.findOne(getPokemon, parameter, PokemonJDBCModel.class).map(PokemonJDBCModel::toDomain);
-        } catch (DataAccessException e) {
-            log.error("Ocurrio un error buscando el pokemon de nombre {}", name, e);
-            throw e;
-        }
+            var response = dao.findOne(getPokemon, parameter, PokemonJDBCModel.class)
+                    .orElseThrow(()-> new BadRequestRestClientException(ErrorCode.POKEMON_NOT_FOUND));
+            return response.toDomain();
     }
 }
