@@ -35,7 +35,6 @@ public class LogInterceptor implements ClientHttpRequestInterceptor {
     }
     private void traceResponse(ClientHttpResponse response, long call) throws IOException {
         String bodyResponse = StreamUtils.copyToString(response.getBody(), Charset.defaultCharset());
-
         log.info("Response Status Code    : {}", response.getStatusCode());
         log.info("Response Status Text    : {}", response.getStatusText());
         log.info("Response Headers        : {}", response.getHeaders());

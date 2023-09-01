@@ -31,14 +31,21 @@ dependencies {
     implementation 'net.logstash.logback:logstash-logback-encoder:6.3'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+/*    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'*/
 
     runtimeOnly'org.postgresql:postgresql:42.5.1'
-    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
-    implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+
 
 }
 dependencyManagement {

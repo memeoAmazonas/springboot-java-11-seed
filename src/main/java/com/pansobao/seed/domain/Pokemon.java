@@ -1,7 +1,6 @@
 package com.pansobao.seed.domain;
 
 import lombok.Builder;
-import lombok.Data;
 import lombok.Value;
 import lombok.With;
 

@@ -1,10 +1,8 @@
 package com.pansobao.seed.config.handler;
 
-import brave.Tracer;
 import com.pansobao.seed.adapter.rest.exception.*;
 import com.pansobao.seed.config.ErrorCode;
 import com.pansobao.seed.config.exception.GenericException;
-import com.pansobao.seed.config.interceptor.SleuthInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,17 +19,15 @@ import java.util.Optional;
 @Slf4j
 @ControllerAdvice
 public class ErrorHandler {
-    private static final String DEVELOP_PROFILE = "Develop";
-
+    private static final String DEVELOP_PROFILE = "dev";
+    private static final String LOCAL_PROFILE = "local";
     private final HttpServletRequest request;
-    private final Tracer tracer;
 
     @Value("${spring.profiles.active:}")
     private String profile;
 
-    public ErrorHandler(final HttpServletRequest request, final Tracer tracer) {
+    public ErrorHandler(final HttpServletRequest request) {
         this.request = request;
-        this.tracer = tracer;
     }
 
     @ExceptionHandler(Throwable.class)
@@ -62,17 +58,9 @@ public class ErrorHandler {
     }
 
     private ResponseEntity<ErrorResponse> buildError(HttpStatus httpStatus, Throwable e, ErrorCode code) {
-        final var isDebugMessage = DEVELOP_PROFILE.equals(profile) ? Arrays.toString(e.getStackTrace()) : "";
-        final var traceId = Optional.ofNullable((this.tracer.currentSpan()))
-                .map(s -> s.context().traceIdString())
-                .orElse(SleuthInterceptor.TRACE_ID_NOT_EXIST);
-        final var spandId = Optional.ofNullable((this.tracer.currentSpan()))
-                .map(s -> s.context().spanIdString())
-                .orElse(SleuthInterceptor.SPAND_ID_NOT_EXIST);
+        final var isDebugMessage = DEVELOP_PROFILE.equals(profile) || LOCAL_PROFILE.equals(profile) ? Arrays.toString(e.getStackTrace()) : "";
         final var queryString = Optional.ofNullable(request.getQueryString()).orElse("");
         final var metaData = Map.of(
-                SleuthInterceptor.X_B3_TRACE_ID, traceId,
-                SleuthInterceptor.X_B3_SPAND_ID,spandId,
                 "query_string", queryString,
                 "stack_trace", isDebugMessage);
         return new ResponseEntity<>(

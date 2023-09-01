@@ -15,7 +15,9 @@ public class HttpClientResponseInterceptor implements ClientHttpResponse {
 
     public HttpClientResponseInterceptor(ClientHttpResponse original) throws IOException {
         this.original = original;
-        this.body = StreamUtils.copyToByteArray(original.getBody());
+        InputStream data = original.getBody();
+        this.body = StreamUtils.copyToByteArray(data);
+        data.close();
     }
 
     @Override

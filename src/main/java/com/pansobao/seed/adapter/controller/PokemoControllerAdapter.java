@@ -29,7 +29,7 @@ public final class PokemoControllerAdapter {
         log.info("Llamada al servicio pokemon/{}", name);
         Pokemon pokemon = this.getPokemonAbilityQuery.getPokemon(name);
         PokemonRest response = PokemonRest.toPokemonRest(pokemon);
-        log.info("Respuesta del servicio pokemon/{}", name);
+        log.info("Respuesta del servicio pokemon/{}: [{}]", name, response);
         return response;
     }
     @GetMapping(GET_INTERNAL_POKEMON)
@@ -37,7 +37,7 @@ public final class PokemoControllerAdapter {
         log.info("Llamada al servicio pokemon/internal/{}", name);
         Pokemon pokemon = this.getPokemonAbilityQuery.getInternal(name);
         PokemonRest response = PokemonRest.toPokemonRest(pokemon);
-        log.info("Respuesta del servicio pokemon/internal/{}", name);
+        log.info("Respuesta del servicio pokemon/internal/{} : [{}]", name, response);
         return response;
     }
 }
