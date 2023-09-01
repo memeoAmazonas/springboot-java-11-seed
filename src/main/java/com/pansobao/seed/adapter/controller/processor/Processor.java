@@ -4,7 +4,6 @@ import com.pansobao.seed.adapter.controller.model.RestResponse;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

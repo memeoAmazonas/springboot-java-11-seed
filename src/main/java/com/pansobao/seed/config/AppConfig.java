@@ -2,7 +2,6 @@ package com.pansobao.seed.config;
 
 import com.pansobao.seed.config.interceptor.LogInterceptor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
