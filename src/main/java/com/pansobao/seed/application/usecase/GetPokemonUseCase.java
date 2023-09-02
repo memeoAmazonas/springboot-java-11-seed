@@ -1,11 +1,10 @@
 package com.pansobao.seed.application.usecase;
 
-import com.pansobao.seed.application.port.in.GetPokemonAbilityQuery;
+import com.pansobao.seed.application.port.in.GetPokemon;
 import com.pansobao.seed.application.port.out.AbilityRepository;
 import com.pansobao.seed.application.port.out.PokemonJDBCRepository;
 import com.pansobao.seed.application.port.out.PokemonRepository;
 import com.pansobao.seed.application.port.out.TypeRepository;
-import com.pansobao.seed.config.ErrorCode;
 import com.pansobao.seed.domain.Ability;
 import com.pansobao.seed.domain.Pokemon;
 import com.pansobao.seed.domain.Type;
@@ -13,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -21,7 +19,7 @@ import java.util.concurrent.Executor;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class GetPokemonAbilityUseCase implements GetPokemonAbilityQuery {
+public class GetPokemonUseCase implements GetPokemon {
 
     private final PokemonRepository pokemonRepository;
     private final AbilityRepository abilityRepository;

@@ -15,7 +15,7 @@ public interface Processor {
     Integer DEFAULT_PAGE_SIZE = 0;
 
     <X> RestResponse<X> processRequest(Enriched enriched, Function<Enriched, RestResponse<X>> operation);
-    Map<String,String> parseFilter(String filters);
+    Map<String,String> parseFilters(String filters);
     Map<String,String> buildMetadata(HttpServletRequest request);
     Map<String,String> buildMetadata(HttpServletRequest request, Integer pageNumber, Integer pageSize);
 

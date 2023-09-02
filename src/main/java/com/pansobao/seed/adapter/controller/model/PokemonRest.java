@@ -2,6 +2,7 @@ package com.pansobao.seed.adapter.controller.model;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.pansobao.seed.domain.Ability;
 import com.pansobao.seed.domain.Pokemon;
 import lombok.Builder;
 import lombok.Data;
@@ -24,5 +25,13 @@ public class PokemonRest {
                         .ability(AbilityRest.toAbilityRest(pokemon.getAbility()))
                         .type(TypeRest.toTypeRest(pokemon.getType()))
                         .build() : null;
+    }
+    public Pokemon toDomain(){
+        return Pokemon.builder()
+                .name(this.name)
+                .ability(Ability.builder()
+                        .name(this.getAbility().getName())
+                        .build())
+                .build();
     }
 }

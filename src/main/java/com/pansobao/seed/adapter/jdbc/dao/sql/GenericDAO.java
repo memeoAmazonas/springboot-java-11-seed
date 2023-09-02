@@ -69,6 +69,6 @@ public class GenericDAO {
         log.info(SQL_MESSAGE, sql, params);
         KeyHolder holder = new GeneratedKeyHolder();
         template.update(sql, params, holder, keys);
-        return holder.getKey();
+        return 0;
     }
 }

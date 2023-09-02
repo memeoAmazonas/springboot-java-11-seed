@@ -40,7 +40,7 @@ public class PokemonJDBCAdapter implements PokemonJDBCRepository {
         var params = new MapSqlParameterSource()
                 .addValue(KEY_POKEMON_NAME, pokemon.getName())
                         .addValue(KEY_POKEMON_ABILITY, pokemon.getAbility().getName());
-        return dao.insert(insertPokemon,params,new String[]{}).intValue();
+        return dao.insert(insertPokemon,params,null).intValue();
     }
 
     @Override

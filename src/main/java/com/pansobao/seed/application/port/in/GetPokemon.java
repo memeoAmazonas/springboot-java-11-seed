@@ -4,7 +4,7 @@ import com.pansobao.seed.domain.Pokemon;
 
 import java.util.concurrent.ExecutionException;
 
-public interface GetPokemonAbilityQuery {
+public interface GetPokemon {
 
     Pokemon getPokemon(String name) throws ExecutionException, InterruptedException;
     Pokemon getInternal(String name);
