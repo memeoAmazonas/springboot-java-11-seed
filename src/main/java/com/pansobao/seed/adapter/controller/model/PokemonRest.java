@@ -6,7 +6,6 @@ import com.pansobao.seed.domain.Ability;
 import com.pansobao.seed.domain.Pokemon;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Value;
 
 import java.util.Objects;
 
