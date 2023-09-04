@@ -1,4 +1,4 @@
-package com.pansobao.seed.adapter.rest.model.pokemon;
+package com.pansobao.seed.adapter.rest.pokemon.model.pokemon;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;

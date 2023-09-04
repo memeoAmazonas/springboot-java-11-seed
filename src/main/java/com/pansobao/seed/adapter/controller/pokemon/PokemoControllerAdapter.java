@@ -1,6 +1,6 @@
-package com.pansobao.seed.adapter.controller;
+package com.pansobao.seed.adapter.controller.pokemon;
 
-import com.pansobao.seed.adapter.controller.model.PokemonRest;
+import com.pansobao.seed.adapter.controller.model.pokemon.PokemonRest;
 import com.pansobao.seed.adapter.controller.model.RestResponse;
 import com.pansobao.seed.adapter.controller.processor.Processor;
 import com.pansobao.seed.adapter.controller.processor.RequestProcessor;

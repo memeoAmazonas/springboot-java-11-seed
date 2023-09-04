@@ -48,6 +48,9 @@ dependencies {
 // https://mvnrepository.com/artifact/javax.validation/validation-api
     implementation 'javax.validation:validation-api:2.0.1.Final'
 
+    //TEST
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.1.0'
+    testImplementation 'com.tngtech.archunit:archunit:1.0.0'
 
 }
 dependencyManagement {
@@ -56,5 +59,8 @@ dependencyManagement {
     }
 }
 tasks.named('test') {
+    useJUnitPlatform()
+}
+test {
     useJUnitPlatform()
 }

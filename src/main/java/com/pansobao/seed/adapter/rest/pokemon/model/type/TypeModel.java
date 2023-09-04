@@ -1,4 +1,4 @@
-package com.pansobao.seed.adapter.rest.model.pokemon;
+package com.pansobao.seed.adapter.rest.pokemon.model.type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -9,19 +9,23 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class TypesModel {
+public class TypeModel {
 
-    private TypeModel type;
-    public Type toTypesDomain(){
-        return Type.builder()
-                .name(type.getName())
-                .build();
-    }
+    private String name;
+    private MoveDamageModel moveDamageClass;
 
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-    static class TypeModel{
+    static class MoveDamageModel {
         private String name;
     }
+
+    public Type toTypeDomain() {
+        return Type.builder()
+                .name(name)
+                .moveDamageClass(moveDamageClass.getName())
+                .build();
+    }
+
 }

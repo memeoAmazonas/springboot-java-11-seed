@@ -1,11 +1,11 @@
-package com.pansobao.seed.adapter.rest;
+package com.pansobao.seed.adapter.rest.pokemon;
 
 import com.pansobao.seed.adapter.rest.exception.BadRequestRestClientException;
 import com.pansobao.seed.adapter.rest.exception.EmptyOrNullBodyRestClientException;
 import com.pansobao.seed.adapter.rest.exception.NotFoundRestClientException;
 import com.pansobao.seed.adapter.rest.exception.TimeoutRestClientException;
 import com.pansobao.seed.adapter.rest.handler.RestTemplateErrorHandler;
-import com.pansobao.seed.adapter.rest.model.type.TypeModel;
+import com.pansobao.seed.adapter.rest.pokemon.model.type.TypeModel;
 import com.pansobao.seed.application.port.out.TypeRepository;
 import com.pansobao.seed.config.ErrorCode;
 import com.pansobao.seed.config.property.PokemonProperty;

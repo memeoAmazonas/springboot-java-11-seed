@@ -1,4 +1,4 @@
-package com.pansobao.seed.adapter.controller.model;
+package com.pansobao.seed.adapter.controller.model.pokemon;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

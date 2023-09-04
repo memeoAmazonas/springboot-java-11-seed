@@ -1,11 +1,10 @@
-package com.pansobao.seed.adapter.controller.model;
+package com.pansobao.seed.adapter.controller.model.pokemon;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.pansobao.seed.domain.Ability;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Value;
 
 import java.math.BigDecimal;
 import java.util.Objects;
