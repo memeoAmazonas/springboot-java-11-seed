@@ -7,11 +7,9 @@ import com.pansobao.seed.adapter.controller.model.pokemon.TypeRest;
 import com.pansobao.seed.domain.Ability;
 import com.pansobao.seed.domain.Pokemon;
 import com.pansobao.seed.domain.Type;
-import io.swagger.models.auth.In;
 import org.springframework.http.HttpStatus;
 
 import java.util.Collections;
-import java.util.Map;
 
 public final class PokemonMock {
     public static final String STRING_VALUE = "bulbasaur";
