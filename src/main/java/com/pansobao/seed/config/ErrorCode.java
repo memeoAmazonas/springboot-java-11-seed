@@ -1,8 +1,10 @@
 package com.pansobao.seed.config;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public enum ErrorCode {
     INTERNAL_ERROR(100, "Error interno del servidor"),
     WEB_CLIENT_GENERIC(101, "Error del Web client"),
@@ -15,12 +17,8 @@ public enum ErrorCode {
     TYPE_NOT_FOUND(108, "No se encontro el type"),
     TYPE_BAD_REQUEST(109, "El llamado al type retorno una peticion invalida"),
     TYPE_TIMEOUT(110, "El llamado al type devolvio error");
+
     private final int value;
     private final String reason;
 
-    ErrorCode(int value, String reason) {
-        this.value = value;
-        this.reason = reason;
-    }
-
-}
+ }

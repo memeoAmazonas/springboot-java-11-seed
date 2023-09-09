@@ -1,16 +1,19 @@
 package com.pansobao.seed.domain;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
+import lombok.With;
 
 import java.math.BigDecimal;
 
-@Data
+@Value
 @Builder
+@With
 public class Pokemon {
 
-    private String name;
-    private Ability ability;
-    private Type type;
-    private BigDecimal health;
+    String name;
+    Ability ability;
+    Type type;
+    BigDecimal health;
+
 }
